@@ -1,0 +1,29 @@
+class Solution{
+    public:
+    void segregateElements(int arr[],int n)
+    {
+        // Your code goes here
+        int countN=0,countP=0;
+        int arrNew[n];
+        
+        //inserting +ve values from first and -ve values from last of the new array
+        for(int i=0;i<n;i++){
+            if(arr[i]>=0){
+               arrNew[countP]=arr[i];
+               ++countP;
+            } 
+            else{
+               arrNew[n-countN-1]=arr[i];
+               ++countN;
+            }
+        }
+        
+        //moving +ve and -ve values of new array to old array
+        for(int i=0;i<n;++i){
+            if(i<countP)
+               arr[i]=arrNew[i];
+            else
+               arr[i]=arrNew[n+countP-i-1];
+        }
+    }
+};
